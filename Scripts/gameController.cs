@@ -8,11 +8,11 @@ public class gameController : MonoBehaviour {
     public float MainMotionDistance;
 
     public Text P1ScoreTxt;
-    public Text P2ScoreTxt;
+    //public Text P2ScoreTxt;
     public Text StatusTxt;
 
     int P1Score = 0;
-    int P2Score = 0;
+    //int P2Score = 0;
     bool P1Turn = true;
     enum ThrowNumber { t1 = 1,t2,t3 };
     ThrowNumber throwNumber = ThrowNumber.t1;
@@ -45,7 +45,7 @@ public class gameController : MonoBehaviour {
 	void Update ()
     {
         P1ScoreTxt.text = P1Score.ToString();
-        P2ScoreTxt.text = P2Score.ToString();
+        //P2ScoreTxt.text = P2Score.ToString();
 
         if (current != last)
         {
@@ -86,17 +86,18 @@ public class gameController : MonoBehaviour {
                         P1Score += score.Points;
                         StatusTxt.text = "Player one";
                     }
-                    else
+                    ///else
                     {
-                        P2Score += score.Points;
-                        StatusTxt.text = "Player two";
+                        //P2Score += score.Points;
+                        //StatusTxt.text = "Player two";
                     }
                     StatusTxt.text += " scored <i>"+score.Points+"</i>.";
 
                     if(throwNumber == ThrowNumber.t3)
                     {
                         P1Turn = !P1Turn;
-                        StatusTxt.text += " Next player";
+                        //StatusTxt.text += " Next player";
+                        StatusTxt.text += " Play again";
                         throwNumber = ThrowNumber.t1;
                     }
                     else { throwNumber++; }
@@ -302,11 +303,11 @@ public class gameController : MonoBehaviour {
         }
         else if (angle < scoringValue.scoringAngles.angle3_19)
         {
-            score.Number = 2;
+            score.Number = 3;
         }
         else if (angle < scoringValue.scoringAngles.angle19_7)
         {
-            score.Number = 16;
+            score.Number = 19;
         }
         else if (angle < scoringValue.scoringAngles.angle7_16)
         {
